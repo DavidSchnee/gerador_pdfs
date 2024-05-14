@@ -1,0 +1,10 @@
+{
+  "resource": "Produtos::Gerador",
+  "params": {
+    "produtos": [
+      { "nome": "Produto 1", "preco": 10.99 },
+      { "nome": "Produto 2", "preco": 15.50 },
+      { "nome": "Produto 3", "preco": 20.00 }
+    ]
+  }
+}

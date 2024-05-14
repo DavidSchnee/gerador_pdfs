@@ -1,6 +1,5 @@
-require 'json'
+require "lib/gerador_pdfs"
 
-def lambda_handler(event:, context:)
-  # TODO: implement
-  { statusCode: 200, body: JSON.generate('Hello from Lambda!') }
+def lambda_handler(payload:, context:)
+  GeradorPdfs::Processor.call(payload)
 end
