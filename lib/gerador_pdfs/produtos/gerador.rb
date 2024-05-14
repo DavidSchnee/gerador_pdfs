@@ -1,4 +1,4 @@
-require 'pdfkit'
+require 'hexapdf'
 require 'base64'
 
 module Produtos
@@ -13,17 +13,24 @@ module Produtos
     end
 
     def call
-      html_content = "<html><head><title>Lista de produtos</title></head><body>"
-      html_content << "<h1>Lista de produtos</h1>"
-      html_content << "<ul>"
+      pdf = HexaPDF::Document.new
+      canvas = pdf.pages.add.canvas
+      canvas.font("Helvetica", size: 12)
+      canvas.text("Lista de Produtos", at: [100, 700])
+      y_position = 660
       @produtos.each do |produto|
-        html_content << "<li>#{produto[:nome]} - $#{produto[:preco]}</li>"
+        canvas.text("#{produto[:nome]} - R$#{produto[:preco]}", at: [100, y_position])
+        y_position -= 20
       end
-      html_content << "</ul>"
-      html_content << "</body></html>"
-      kit = PDFKit.new(html_content, page_size: 'Letter')
-      pdf_data = kit.to_pdf
-      Base64.strict_encode64(pdf_data)
+      # Write the PDF content to a string
+      pdf_data = StringIO.new
+      pdf.write(pdf_data)
+
+      # Reset the position to the beginning of the StringIO
+      pdf_data.rewind
+
+      # Encode the PDF data as Base64
+      Base64.strict_encode64(pdf_data.read)
     end
   end
 end

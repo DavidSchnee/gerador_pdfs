@@ -3,7 +3,7 @@
 source "https://rubygems.org"
 ruby "~> 3.3"
 gem "activesupport", "~> 7.0", ">= 7.0.2"
-gem "pdfkit"
+gem "hexapdf"
 gem "pry"
 gem "wkhtmltopdf-binary"
 
