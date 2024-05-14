@@ -5,7 +5,6 @@ ruby "~> 3.3"
 gem "activesupport", "~> 7.0", ">= 7.0.2"
 gem "hexapdf"
 gem "pry"
-gem "wkhtmltopdf-binary"
 
 group :development, :test do
   gem 'dotenv', '~> 2.7'

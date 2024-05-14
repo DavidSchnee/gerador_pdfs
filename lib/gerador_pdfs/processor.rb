@@ -2,14 +2,14 @@
 
 module GeradorPdfs
   class Processor
-    attr_reader :payload
+    attr_reader :event
 
-    def self.call(payload)
-      new(payload).call
+    def self.call(event)
+      new(event).call
     end
 
-    def initialize(payload)
-      @payload = payload.deep_symbolize_keys
+    def initialize(event)
+      @event = event
     end
 
     def call
@@ -23,7 +23,11 @@ module GeradorPdfs
     end
 
     def resource_class
-      "#{resource_request_class}".constantize
+      constantize(resource_request_class)
+    end
+
+    def constantize(class_name)
+      Object.const_get(class_name)
     end
   end
 end
