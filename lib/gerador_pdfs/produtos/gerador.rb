@@ -5,7 +5,7 @@ module Produtos
   class Gerador
     def initialize(payload)
       @produtos = payload[:produtos]
-      @output_file = payload["output_file"] || "products.pdf"
+      @output_file = payload[:output_file] || "products.pdf"
     end
 
     def self.call(payload)
