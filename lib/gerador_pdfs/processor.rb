@@ -13,13 +13,13 @@ module GeradorPdfs
     end
 
     def call
-      resource_class.send(:call, @event[:params])
+      resource_class.send(:call, @event["params"])
     end
 
     private
 
     def resource_request_class
-      @event[:resource]
+      @event["resource"]
     end
 
     def resource_class

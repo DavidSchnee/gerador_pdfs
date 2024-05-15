@@ -1,3 +1,4 @@
+require "json"
 require_relative "./gerador_pdfs/processor"
 require_relative "./gerador_pdfs/produtos/gerador"
 

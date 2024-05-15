@@ -34,4 +34,5 @@ zip -r ../gerador_pdfs.zip lambda_function.rb lib vendor config
 
 aws lambda update-function-code \
   --function-name GeradorPdfs \
-  --zip-file fileb://../gerador_pdfs.zip
+  --zip-file fileb://../gerador_pdfs.zip \
+  --profile david_pessoal
